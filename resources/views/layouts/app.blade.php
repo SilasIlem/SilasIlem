@@ -20,10 +20,34 @@
             main .main {
                 min-height : 70vh;
             }
+
+            #profile {
+                min-height : 80vh;
+                max-height : 80vh;
+                min-width : 80vw;
+                max-width : 80vw;
+                background : white;
+                border-radius : 8px;
+                position : fixed;
+                top : 10vh;
+                left :  10vw;
+                display : none;
+                padding : 30px;
+                border : rgb(196, 196, 196) 3px solid;
+                box-shadow : 0px 0px 16px black;
+            }
+
+            #profile.show-profile {
+                display : flex;
+            }
         </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
+
+            <div id="profile">
+                profile here and more to come
+            </div>
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -41,5 +65,11 @@
                 welcome to the footer part of the website
             </footer>
         </div>
+        <script>
+            function openProfile() {
+                document.getElementById('profile').classList.toggle('show-profile');
+                console.log('welcome');
+            }
+        </script>
     </body>
 </html>

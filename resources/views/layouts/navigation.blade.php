@@ -24,7 +24,7 @@
                     <x-nav-link :href="route('refer')" :active="request()->routeIs('refer')">
                         {{ __('Refer A Pip') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('sub')" :active="request()->routeIs('sub')">
                         {{ __('My Subscription') }}
                     </x-nav-link>
                 </div>
@@ -47,8 +47,8 @@
 
                     <x-slot name="content">
 
-                        <div>
-                            profile
+                        <div style = "pointer : cursor; font-size : 1rem; font-weight : 500" onclick = "javascript:void(0); openProfile();" class = "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                            Profile
                         </div>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -100,8 +100,8 @@
             </x-responsive-nav-link>
         </div>
 
-        <div>
-            profile
+        <div onclick = "javascript:void(0); openProfile();" style = "pointer : cursor; font-size : 1rem; font-weight : 500" class = "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+            Profile
         </div>
 
         <!-- Responsive Settings Options -->
