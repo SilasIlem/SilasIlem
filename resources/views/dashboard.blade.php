@@ -5,6 +5,13 @@
         </h2>
     </x-slot>
 
+    <style>
+        #app {
+            display : flex;
+            flex-direction : column-reverse;
+        }
+    </style>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -15,7 +22,9 @@
                     <div id = app>
 
                         @foreach($allthem as $each)
-                            <offence-component no = {{$each}} title="Mister"></offence-component>
+                            
+                            <gen-card no = {{$each['id']}} title="{{$each['title']}}"></gen-card>
+                        
                         @endforeach
 
                     </div>

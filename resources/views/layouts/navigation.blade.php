@@ -79,8 +79,13 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            
+            <x-responsive-nav-link :href="route('gen')" :active="request()->routeIs('gen')">
                 {{ __('Generate Questions') }}
+            </x-responsive-nav-link>
+            
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{ __('Refer A Pip') }}
             </x-responsive-nav-link>
         </div>
 

@@ -53,7 +53,6 @@
                 justify-content: space-around;
                 border-radius : 8px;
                 box-shadow : 0px 0px 8px #eb2f2f;
-                margin-right : 50px;
             }
 
             #s-media a {
@@ -65,13 +64,38 @@
                 justify-content : space-between;
                 padding : 16px 16px;
                 width : 100%;
-                height : 50px;
+                min-height : 50px;
+                margin-left : -16px;
             }
-            
+
+            #s-media a:hover {
+                transform : scale(1.5);
+                transition : transform .5s linear;
+            }
+
+            #open-menu {
+                position : fixed;
+                bottom : 8px;
+                right : 8px;
+                height : 50px;
+                outline : none;
+                border : none;
+                border-radius : 4px;
+                width : 50px;
+                font-size : 30px;
+                text-align : center;
+                color : white;
+                background : #eb2f2f;
+                display : none;
+                box-shadow : 0px 0px 20px black;
+            }
+
+           
             .links > div {
-                min-width : 200px;
+                min-width : 280px;
+                max-width : 280px;
                 display : flex;
-                justify-content: space-around;
+                justify-content: space-between;
             }
 
             #container {
@@ -109,6 +133,7 @@
                 width : 100%;
                 display : flex;
                 justify-content : center;
+                flex-wrap : wrap;
                 position : absolute;
                 bottom : 50px;
             }
@@ -118,12 +143,17 @@
                 border-radius : 8px;
                 width : 150px;
                 text-align : center;
-                margin : 0px 30px;
+                margin : 16px 30px;
                 background : #eb2f2f;
                 color : white;
                 border : none;
                 outline : none;
                 font-size : 18px;
+            }
+
+            #btns > button:hover {
+                transform : scale(1.08);
+                transition : transform .5s linear;
             }
 
             #landing > * {
@@ -166,6 +196,93 @@
                 width : 100%;
                 border : 1px solid #eb2f2f;
             }
+
+            #more-links {
+                min-height : 60px;
+                max-height : 60px;
+                margin : 10px 0px;
+                background : white;
+                display : flex;
+                justify-content : center;
+                align-items : center;
+                min-width : 100%;
+                max-width : 100%;
+                flex-wrap;
+                animation : expand 2s ease-out forwards;
+            }
+
+            #more-links > *{
+                min-width : 100px;
+                text-align : center;
+            }
+
+            @keyframes expand {
+                from {
+                    transform : scaleX(0.8)
+                }
+                to {
+                    transform : scaleX(1);
+                }
+            }
+
+            @media screen and (max-width : 764px) {
+
+                header ul {
+                    flex-direction : column;
+                    background : #eb2f2f;
+                    min-height : calc(90vh - 70px);
+                    max-height : calc(90vh - 70px);
+                    min-width : 90vw;
+                    max-width : 90vw;
+                    left : 5vw;
+                    bottom : 70px;
+                    z-index : 999;
+                    border-radius : 8px;
+                    transform-origin : bottom right;
+                    transform : scale(0);
+                    transition : all .3s linear;
+                    position : fixed;
+                }
+
+                header ul.appear {
+                    transform : scale(1);
+                    transition : all .3s linear;
+                }
+
+                .links {
+                    justify-content : center;
+                    flex-wrap : wrap;
+                }
+
+                .links > div {
+                    margin : 20px;
+                }
+
+                #open-menu {
+                    display : block;
+                }
+
+                .container {
+                    min-width : 100%;
+                    max-width : 100%;
+                    margin : 0px;
+                }
+
+                #landing > * {
+                    min-width : 90vw;
+                }
+
+                #about {
+                    margin : 0px;
+                    padding : 10px;
+                    text-align : center;
+                }
+
+                #about > * {
+                    width : 90vw;
+                }
+            }
+
         </style>
     </head>
     <body class="antialiased">
@@ -198,7 +315,7 @@
         
       
                 <header>
-                    <ul>
+                    <ul id = navlinks>
                         <li><i class = "bi bi-house"></i>Dashboard</li>
                         <li><i class = "bi bi-people"></i>About Us</li>
                         <li><i class = "bi bi-box"></i>Our Services</li>
@@ -219,6 +336,17 @@
 
             </div>
         </div>
+
+        <div id = more-links>
+            <a href="">a</a>
+            <a href="">b</a>
+            <a href="">c</a>
+            <a href="">d</a>
+        </div>
+
+        <button id="open-menu">
+            <i class = "bi bi-house"></i>
+        </button>
 
         <h3 style = "text-align : center; margin : 10px 0px">Welcome to Optimyzas</h3>
 
@@ -265,5 +393,10 @@
 
         </footer>
         
+        <script>
+            document.getElementById('open-menu').addEventListener('click', () => {
+                document.getElementById('navlinks').classList.toggle('appear');
+            });
+        </script>
     </body>
 </html>
