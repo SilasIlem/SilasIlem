@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dashingController;
+use App\Http\Controllers\historyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +23,15 @@ Route::get('/dashboard', [App\Http\Controllers\dashingController::class, 'index'
 Route::get('/generate', function () {
     return view('generate');
 })->middleware(['auth'])->name('gen');
+
+Route::get('/history', [historyController::class, 'index'])->middleware(['auth'])->name('history');
+
+Route::get('/refer', function () {
+    return view('refer');
+})->middleware(['auth'])->name('refer');
+
+Route::get('/subscription', function () {
+    return view('sub');
+})->middleware(['auth'])->name('sub');
 
 require __DIR__ . '/auth.php';

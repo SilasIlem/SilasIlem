@@ -18,7 +18,10 @@
                     <x-nav-link :href="route('gen')" :active="request()->routeIs('gen')">
                         {{ __('Generate Questions') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('history')" :active="request()->routeIs('history')">
+                        {{ __('Generation History') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('refer')" :active="request()->routeIs('refer')">
                         {{ __('Refer A Pip') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -83,9 +86,17 @@
             <x-responsive-nav-link :href="route('gen')" :active="request()->routeIs('gen')">
                 {{ __('Generate Questions') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('history')" :active="request()->routeIs('history')">
+                {{ __('Generation History') }}
+            </x-responsive-nav-link>
             
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('refer')" :active="request()->routeIs('refer')">
                 {{ __('Refer A Pip') }}
+            </x-responsive-nav-link>
+            
+            <x-responsive-nav-link :href="route('sub')" :active="request()->routeIs('sub')">
+                {{ __('My Subscription') }}
             </x-responsive-nav-link>
         </div>
 

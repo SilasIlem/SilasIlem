@@ -15,6 +15,23 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <style>
+            @media screen and (max-width : 640px) {
+                .auth-box {
+                    max-width : 90vw;
+                    margin-left : 5vw;
+                    min-height : 90vh;
+                }
+
+                .little-box {
+                    min-height : 80vh;
+                    display : flex;
+                    flex-direction : column;
+                    justify-content: center;
+                } 
+            }
+            
+        </style>
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">

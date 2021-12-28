@@ -15,6 +15,12 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <style>
+            main .main {
+                min-height : 70vh;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -30,10 +36,10 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
-                <footer>
-                    welcome to the footer part of the website
-                </footer>
             </main>
+            <footer>
+                welcome to the footer part of the website
+            </footer>
         </div>
     </body>
 </html>
