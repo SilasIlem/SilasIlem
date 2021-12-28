@@ -269,17 +269,19 @@
                 }
 
                 #landing > * {
-                    min-width : 90vw;
+                    min-width : 86vw;
                 }
 
                 #about {
                     margin : 0px;
-                    padding : 10px;
+                    padding : 0px;
+                    padding-top : 40px;
                     text-align : center;
                 }
 
                 #about > * {
-                    width : 90vw;
+                    width : 86vw;
+                    text-align : center;
                 }
             }
 
