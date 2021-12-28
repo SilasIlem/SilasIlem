@@ -29,6 +29,8 @@
                     </p>
                     <div id = app>
 
+                        
+
                         <example-component no = 1></example-component>
                         <example-component no = 2></example-component>
 
