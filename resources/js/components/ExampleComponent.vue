@@ -107,14 +107,14 @@
 
 <style scoped>
     #independent {
-        min-height : 70vh;
-        min-width : 70vw;
-        left : 15vw;
+        min-height : 80vh;
+        min-width : 90vw;
+        left : 5vw;
         z-index : 99;
-        max-width : 70vw;
+        max-width : 90vw;
         position : fixed;
-        top : 15vh;
-        max-height : 70vh;
+        top : 10vh;
+        max-height : 80vh;
         background : white;
         border-radius : 8px;
         display : none;
