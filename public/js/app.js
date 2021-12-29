@@ -8809,18 +8809,19 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
                 spinner = document.getElementById('spin');
                 classer = document.getElementById('class-category');
                 subjects = document.getElementById('subject-category');
+                source = "".concat(source, "json/subjects/").concat(classer.value, ".json");
 
                 if (!(classer.value != 'not')) {
-                  _context.next = 20;
+                  _context.next = 21;
                   break;
                 }
 
                 spinner.style.display = 'block';
-                _context.prev = 5;
-                _context.next = 8;
-                return _this.$http.get("http://localhost:8000/json/subjects/".concat(classer.value, ".json"));
+                _context.prev = 6;
+                _context.next = 9;
+                return _this.$http.get(source);
 
-              case 8:
+              case 9:
                 response = _context.sent;
                 _this.subjects = response.data;
                 spinner.style.display = "none";
@@ -8832,20 +8833,20 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
                 });
 
                 document.getElementById('selection').style.display = "block";
-                _context.next = 20;
+                _context.next = 21;
                 break;
 
-              case 17:
-                _context.prev = 17;
-                _context.t0 = _context["catch"](5);
+              case 18:
+                _context.prev = 18;
+                _context.t0 = _context["catch"](6);
                 console.log(_context.t0);
 
-              case 20:
+              case 21:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[5, 17]]);
+        }, _callee, null, [[6, 18]]);
       }))();
     },
     spinForTopics: function spinForTopics(source) {
@@ -8860,42 +8861,43 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
                 spinner = document.getElementById('spin');
                 subber = document.getElementById('subject-category');
                 toppick = document.getElementById('topic-category');
+                source = "".concat(source, "json/topics/").concat(subber.value, ".json");
 
-                if (!(classer.value != 'not')) {
-                  _context2.next = 19;
+                if (!(subber.value != 'not')) {
+                  _context2.next = 20;
                   break;
                 }
 
                 spinner.style.display = 'block';
-                _context2.prev = 5;
-                _context2.next = 8;
-                return _this2.$http.get("http://localhost:8000/json/topics/".concat(subber.value, ".json"));
+                _context2.prev = 6;
+                _context2.next = 9;
+                return _this2.$http.get(source);
 
-              case 8:
+              case 9:
                 response = _context2.sent;
                 _this2.topics = response.data;
                 spinner.style.display = "none";
                 console.log(_this2.topics);
-                subjects.innerHTML = "\n                    <option value=\"not\">--Please choose a topic--</option>";
+                toppick.innerHTML = '';
 
                 _this2.topics.forEach(function (topic) {
                   toppick.innerHTML += "\n                                            <option value=\"".concat(topic.value, "\">").concat(topic.name, "</option>");
                 });
 
-                _context2.next = 19;
+                _context2.next = 20;
                 break;
 
-              case 16:
-                _context2.prev = 16;
-                _context2.t0 = _context2["catch"](5);
+              case 17:
+                _context2.prev = 17;
+                _context2.t0 = _context2["catch"](6);
                 console.log(_context2.t0);
 
-              case 19:
+              case 20:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[5, 16]]);
+        }, _callee2, null, [[6, 17]]);
       }))();
     }
   }
@@ -32987,7 +32989,7 @@ var render = function () {
                     },
                   },
                   [
-                    _c("option", { attrs: { value: "" } }, [
+                    _c("option", { attrs: { value: "not" } }, [
                       _vm._v("--Please choose a subject--"),
                     ]),
                   ]
@@ -33050,10 +33052,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c(
           "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "topic-category", id: "topic-category" },
-          },
+          { attrs: { name: "topic-category", id: "topic-category" } },
           [
             _c("option", { attrs: { value: "" } }, [
               _vm._v("--Please choose a topic--"),

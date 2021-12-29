@@ -18,7 +18,7 @@
                             
                             <br />
 
-                            <select id = "class-category" v-on:change = "spinForSubjects(source)" name="class-category">
+                            <select id = "class-category" v-on:change = "spinForSubjects(source);" name="class-category">
                                 <option value="not">--Please choose an option--</option>
                                 <option value="bece">BECE, Junior Secondary</option>
                                 <option value="waec">WAEC, Senior Secondary</option>
@@ -37,7 +37,7 @@
                                 <br />
 
                                 <select v-on:change = "spinForTopics(source)" name="subject-category" id="subject-category">
-                                    <option value="">--Please choose a subject--</option>
+                                    <option value="not">--Please choose a subject--</option>
                                 </select>
                             </div>
                         
@@ -50,7 +50,7 @@
                                     
                                     <br />
 
-                                    <select name="topic-category" id="topic-category" class="form-control">
+                                    <select name="topic-category" id="topic-category">
                                         <option value="">--Please choose a topic--</option>
                                     </select>
                                 </div>
@@ -154,11 +154,12 @@ export default {
             var spinner = document.getElementById('spin');
             var classer = document.getElementById('class-category');
             var subjects = document.getElementById('subject-category');
+            source = `${source}json/subjects/${classer.value}.json`;
             if (classer.value != 'not') {
                 spinner.style.display = 'block';
                 try {
                     const response = await this.$http.get(
-                        `http://localhost:8000/json/subjects/${classer.value}.json`
+                        source
                     );
                     this.subjects = response.data;
                     spinner.style.display = "none";
@@ -184,17 +185,17 @@ export default {
             var spinner = document.getElementById('spin');
             var subber = document.getElementById('subject-category');
             var toppick = document.getElementById('topic-category');
-            if (classer.value != 'not') {
+            source = `${source}json/topics/${subber.value}.json`;
+            if (subber.value != 'not') {
                 spinner.style.display = 'block';
                 try {
                     const response = await this.$http.get(
-                        `http://localhost:8000/json/topics/${subber.value}.json`
+                        source
                     );
                     this.topics = response.data;
                     spinner.style.display = "none";
                     console.log(this.topics);
-                    subjects.innerHTML = `
-                    <option value="not">--Please choose a topic--</option>`;
+                    toppick.innerHTML = '';
                     this.topics.forEach(topic => {
                         toppick.innerHTML += `
                                             <option value="${topic.value}">${topic.name}</option>`;
