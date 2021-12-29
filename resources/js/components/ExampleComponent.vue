@@ -3,64 +3,70 @@
         <div class="row justify-content-center">
             <div class="col-md-8 py-6">
                 <div class="card">
+
                     <div class="card-header">SET {{no}}</div>
 
                     <div class="card-body">
-                            
-                        <div>
-                            <button v-if = "no != 1" type="button" id="close5" class="xxx">X</button>
-                        
-                            <label for="classcategory5">Select Class & Exam Types:<span style="color:red">*</span></label>
-                            
-                            <br/>
 
-                            <select name="classcategory5" id="classcategory5" class="form-control">
-                                <option value="">--Please choose an option--</option>
-                                <option value="1">BECE, Junior Secondary</option>
-                                <option value="2">WAEC, Senior Secondary</option>
-                                <option value="3">JAMB</option>
-                                <option value="4">NECO</option>
+                        <img id = spin :src = "source + 'images/compact-disc-solid.svg'" style="width: 50px; height : 50px; color:blue" />
+                        
+                        <button v-if = "no != 1" type="button" id="close">X</button>
+                        
+                        <div>
+                        
+                            <label for="class-category">Select Class & Exam Types:<span style="color:red">*</span></label>
+                            
+                            <br />
+
+                            <select id = "class-category" v-on:change = "spinForSubjects(source)" name="class-category">
+                                <option value="not">--Please choose an option--</option>
+                                <option value="bece">BECE, Junior Secondary</option>
+                                <option value="waec">WAEC, Senior Secondary</option>
+                                <option value="jamb">JAMB</option>
+                                <option value="neco">NECO</option>
                             </select>
                         </div>
-            
 
-                        <div id = 'subject-select' style="display: none;">
-                            <div>
-                                <i class="fas fa-spinner fa-spin" style="font-size: 30px; color:blue"></i>
+                        <br />
+                        <br />
+        
+                        <div id = 'selection'>
+                            <div>                            
+                                <label for="subject-category">Select Subject: <span style="color:red">*</span></label>
+                                
+                                <br />
+
+                                <select v-on:change = "spinForTopics(source)" name="subject-category" id="subject-category">
+                                    <option value="">--Please choose a subject--</option>
+                                </select>
                             </div>
-                            <div  id="subjDiv5">
-                            <!-- style="display: none;"  -->
-                            
-                                <div class="container">
-                                    <label for="classsubjects">Select Subject: <span style="color:red">*</span></label>
-                                    
-                                    <br/>
+                        
+                                <br />
+                                <br />
 
-                                    <select name="classsubjects5" id="classsubjects5">
-                                        <option value="">--Please choose a subject--</option>
+                            <div>
+                                <div>
+                                    <label for="topic-category">Select Topic: <span style="color:red">*</span></label>
+                                    
+                                    <br />
+
+                                    <select name="topic-category" id="topic-category" class="form-control">
+                                        <option value="">--Please choose a topic--</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="topicDiv5">
-                            <div class="container ">
-                                <label for="topics5">Select Topic: <span style="color:red">*</span></label><br>
-                                <select name="topics5" id="topics5" class="form-control">
-                                    <option value="">--Please choose a topic--</option>
-                                    <option value="">Loading Topic List...</option>
-                                </select>
-                            </div>
-                        </div>
-
+                            <br />
+                            <br />
 
                         <div class="row form-group" id="subtopicDiv5" style="display: none;">
-                            <div class="container ">
+                           
                                 <label for="subtopics5">Select Subtopic: <span style="color:red">*</span></label><br>
                                 <select name="subtopics5" id="subtopics5" class="form-control">
                                     <option value="">--Please choose a subtopic--</option>
                                 </select>
-                            </div>
+                          
                         </div>
 
                         <div class="row form-group" id="topicloader5" style="display: none;">
@@ -83,7 +89,37 @@
 </template>
 
 <style scoped>
-      .xxx {
+    .card-header {
+        height : 70px;
+        font-size : 30px;
+        padding-top : 10px;
+        color : blue;
+    }
+
+    .card-body {
+        min-height : 50vh;
+        display : flex;
+        justify-content : space-around;
+        flex-direction : column;
+        align-items : center;
+    }
+
+    #spin {
+        animation : spin 2s linear infinite;
+        display : none;
+    }
+
+    #selection {
+        display : none;
+    }
+
+    @keyframes spin {
+        to {
+            transform : rotate(360deg);
+        }
+    }
+
+    #close {
         cursor: pointer;
         border: none;
         height: 30px;
@@ -97,13 +133,82 @@
 </style>
 
 <script>
+import axios from 'axios';
+Vue.prototype.$http = axios;
+
 export default {
+    data : () => {
+        return {
+            one : 'I am the one.'
+        }
+    },
     props : {
-        no : Number
+        no : Number,
+        source : String
     },
     mounted() {
         console.log("Component mounted.");
     },
+    methods: {
+        async spinForSubjects(source) {
+            var spinner = document.getElementById('spin');
+            var classer = document.getElementById('class-category');
+            var subjects = document.getElementById('subject-category');
+            if (classer.value != 'not') {
+                spinner.style.display = 'block';
+                try {
+                    const response = await this.$http.get(
+                        `http://localhost:8000/json/subjects/${classer.value}.json`
+                    );
+                    this.subjects = response.data;
+                    spinner.style.display = "none";
+                    console.log(this.subjects);
+                    subjects.innerHTML = `
+                    <option value="not">--Please choose a subject--</option>`;
+                    this.subjects.forEach(subject => {
+                        subjects.innerHTML += `
+                                            <option value="${subject.value}">${subject.name}</option>`;
+                    });
+                    document.getElementById('selection').style.display = "block";
+                    
+                } 
+                
+                catch (error) {
+                    console.log(error);
+                }
+            }
+            
+        },
+
+        async spinForTopics(source) {
+            var spinner = document.getElementById('spin');
+            var subber = document.getElementById('subject-category');
+            var toppick = document.getElementById('topic-category');
+            if (classer.value != 'not') {
+                spinner.style.display = 'block';
+                try {
+                    const response = await this.$http.get(
+                        `http://localhost:8000/json/topics/${subber.value}.json`
+                    );
+                    this.topics = response.data;
+                    spinner.style.display = "none";
+                    console.log(this.topics);
+                    subjects.innerHTML = `
+                    <option value="not">--Please choose a topic--</option>`;
+                    this.topics.forEach(topic => {
+                        toppick.innerHTML += `
+                                            <option value="${topic.value}">${topic.name}</option>`;
+                    });
+                    
+                } 
+                
+                catch (error) {
+                    console.log(error);
+                }
+            }
+            
+        }
+    }      
 };
 </script>
 

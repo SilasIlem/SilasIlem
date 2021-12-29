@@ -1,0 +1,22 @@
+[
+    {
+        "id" : 1,
+        "name" : "Physics",
+        "value" : "phy"
+    }, 
+    {
+        "id" : 2,
+        "name" : "Chemistry",
+        "value" : "che"
+    },
+    {
+        "id" : 3,
+        "name" : "Mathematics",
+        "value" : "math"
+    },
+    {
+        "id" : 4,
+        "name" : "English",
+        "value" : "eng"
+    }
+]

@@ -12,11 +12,23 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-icons/bootstrap-icons.css')}}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <style>
+            * {
+                padding : 0px;
+                margin : 0px;
+                box-sizing : border-box;
+            }
+
+            body {
+                overflow-x : hidden;
+                overflow-y : visible;
+            }
+
             main .main {
                 min-height : 70vh;
             }
@@ -40,6 +52,16 @@
             #profile.show-profile {
                 display : flex;
             }
+
+            footer {
+                min-width : 100vw;
+                max-width : 100vw;
+                min-height : 30vh;
+                display : flex;
+                flex-direction : column;
+                justify-content : space-evenly;
+                align-items : center;
+            }
         </style>
     </head>
     <body class="font-sans antialiased">
@@ -61,14 +83,30 @@
             <main>
                 {{ $slot }}
             </main>
-            <footer>
-                welcome to the footer part of the website
+            <footer class = "bg-white">
+                <h1>Optimyzas</h1>
+                <h4>AN ONLINE EXAM-SETTING PLATFORM</h4>
+                
+                <br />
+                <br />
+
+                <p>Join Our Newsletter</p>
+
+                <br />
+
+                <p>subscribe and get the latest updates straight into your inbox</p>
+                
+                <br />
+
+                <form action="" method = POST>
+                    <input type="email" placeholder = "Email Address" name = email />
+                    <button type="submit">Subscribe</button>
+                </form>
             </footer>
         </div>
         <script>
             function openProfile() {
                 document.getElementById('profile').classList.toggle('show-profile');
-                console.log('welcome');
             }
         </script>
     </body>
