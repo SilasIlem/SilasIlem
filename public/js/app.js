@@ -8781,6 +8781,75 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -8809,7 +8878,7 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
                 spinner = document.getElementById('spin');
                 classer = document.getElementById('class-category');
                 subjects = document.getElementById('subject-category');
-                source = "".concat(source, "json/subjects/").concat(classer.value, ".json");
+                source = "".concat(source, "json/").concat(classer.value, "/subjects.json");
 
                 if (!(classer.value != 'not')) {
                   _context.next = 21;
@@ -8853,52 +8922,169 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var spinner, subber, toppick, response;
+        var spinner, classer, subber, toppick, toppicker, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 spinner = document.getElementById('spin');
+                classer = document.getElementById('class-category').value;
                 subber = document.getElementById('subject-category');
                 toppick = document.getElementById('topic-category');
-                source = "".concat(source, "json/topics/").concat(subber.value, ".json");
+                toppicker = document.getElementById('top-selection');
+                source = "".concat(source, "json/").concat(classer, "/").concat(subber.value, "/topics.json");
 
                 if (!(subber.value != 'not')) {
-                  _context2.next = 20;
+                  _context2.next = 23;
                   break;
                 }
 
                 spinner.style.display = 'block';
-                _context2.prev = 6;
-                _context2.next = 9;
+                _context2.prev = 8;
+                _context2.next = 11;
                 return _this2.$http.get(source);
 
-              case 9:
+              case 11:
                 response = _context2.sent;
                 _this2.topics = response.data;
                 spinner.style.display = "none";
                 console.log(_this2.topics);
-                toppick.innerHTML = '';
+                toppicker.style.display = "block";
+                toppick.innerHTML = "\n                                    <option value=\"not\">--Please choose a subtopic--</option>";
 
                 _this2.topics.forEach(function (topic) {
-                  toppick.innerHTML += "\n                                            <option value=\"".concat(topic.value, "\">").concat(topic.name, "</option>");
+                  toppick.innerHTML += "\n                            <option value=\"".concat(topic.value, "\">").concat(topic.name, "</option>");
                 });
 
-                _context2.next = 20;
+                _context2.next = 23;
                 break;
 
-              case 17:
-                _context2.prev = 17;
-                _context2.t0 = _context2["catch"](6);
+              case 20:
+                _context2.prev = 20;
+                _context2.t0 = _context2["catch"](8);
                 console.log(_context2.t0);
 
-              case 20:
+              case 23:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[6, 17]]);
+        }, _callee2, null, [[8, 20]]);
       }))();
+    },
+    spinForSubtopics: function spinForSubtopics(source) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var spinner, classer, subber, top, subtick, subticker, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                spinner = document.getElementById('spin');
+                classer = document.getElementById('class-category').value;
+                subber = document.getElementById('subject-category').value;
+                top = document.getElementById('topic-category');
+                subtick = document.getElementById('subtopic-category');
+                subticker = document.getElementById('sub-selection');
+                source = "".concat(source, "json/").concat(classer, "/").concat(subber, "/").concat(top.value, "/subtopics.json");
+
+                if (!(top.value != 'not')) {
+                  _context3.next = 24;
+                  break;
+                }
+
+                spinner.style.display = 'block';
+                _context3.prev = 9;
+                _context3.next = 12;
+                return _this3.$http.get(source);
+
+              case 12:
+                response = _context3.sent;
+                _this3.subtopics = response.data;
+                spinner.style.display = "none";
+                console.log(_this3.subtopics);
+                subticker.style.display = "block";
+                subtick.innerHTML = "\n                                    <option value=\"not\">--Please choose a subtopic--</option>";
+
+                _this3.subtopics.forEach(function (subtopic) {
+                  subtick.innerHTML += "\n                            <option value=\"".concat(subtopic.value, "\">").concat(subtopic.name, "</option>");
+                });
+
+                _context3.next = 24;
+                break;
+
+              case 21:
+                _context3.prev = 21;
+                _context3.t0 = _context3["catch"](9);
+                console.log(_context3.t0);
+
+              case 24:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[9, 21]]);
+      }))();
+    },
+    quest: function quest(source) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var spinner, classer, subber, top, value, showglass, subticker, preview_btn, url, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                spinner = document.getElementById('spin');
+                classer = document.getElementById('class-category').value;
+                subber = document.getElementById('subject-category').value;
+                top = document.getElementById('topic-category');
+                value = document.getElementById('subtopic-category').value;
+                showglass = document.getElementById('independent');
+                subticker = document.getElementById('sub-selection');
+                preview_btn = document.getElementById('preview');
+                url = "".concat(source, "quest/").concat(value);
+
+                if (!(top.value != 'not')) {
+                  _context4.next = 24;
+                  break;
+                }
+
+                spinner.style.display = 'block';
+                _context4.prev = 11;
+                _context4.next = 14;
+                return _this4.$http.post(url);
+
+              case 14:
+                response = _context4.sent;
+                _this4.questions = response.data;
+                spinner.style.display = "none";
+                preview_btn.style.display = "block";
+
+                _this4.questions.forEach(function (question) {
+                  showglass.innerHTML += "\n                            <div style = \"display : flex; flex-direction : column; text-align : left; min-height : 200px; min-width : 90%; max-width : 90%; box-shadow : 0px 0px 8px black; margin : 5%;\">\n                                <span>".concat(question.id, "</span>\n                                 -- \n                                <p>").concat(question.question, "</p>\n                                <p>").concat(question.answers[0], "</p>\n                                <p>").concat(question.answers[1], "</p>\n                                <p>").concat(question.answers[2], "</p>\n                                <p>").concat(question.answers[3], "</p>\n                                <p>").concat(question.answers[4], "</p>\n                            </div>\n                        ");
+                });
+
+                _context4.next = 24;
+                break;
+
+              case 21:
+                _context4.prev = 21;
+                _context4.t0 = _context4["catch"](11);
+                console.log(_context4.t0);
+
+              case 24:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[11, 21]]);
+      }))();
+    },
+    preview: function preview() {
+      var showglass = document.getElementById('independent');
+      showglass.style.display = "block";
     }
   }
 });
@@ -14078,7 +14264,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card-header[data-v-299e239e] {\n    height : 70px;\n    font-size : 30px;\n    padding-top : 10px;\n    color : blue;\n}\n.card-body[data-v-299e239e] {\n    min-height : 50vh;\n    display : flex;\n    justify-content : space-around;\n    flex-direction : column;\n    align-items : center;\n}\n#spin[data-v-299e239e] {\n    -webkit-animation : spin-data-v-299e239e 2s linear infinite;\n            animation : spin-data-v-299e239e 2s linear infinite;\n    display : none;\n}\n#selection[data-v-299e239e] {\n    display : none;\n}\n@-webkit-keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n@keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n#close[data-v-299e239e] {\n    cursor: pointer;\n    border: none;\n    height: 30px;\n    width: 30px;\n    border-radius: 50%;\n    box-shadow: 0px 1px 4px 1px #4e73df;\n    color: red;\n    float: right;\n    background-color: transparent;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#independent[data-v-299e239e] {\n    min-height : 70vh;\n    min-width : 70vw;\n    left : 15vw;\n    z-index : 99;\n    max-width : 70vw;\n    position : fixed;\n    top : 15vh;\n    max-height : 70vh;\n    background : white;\n    border-radius : 8px;\n    display : none;\n    box-shadow : 0px 0px 8px #eb2f2f;\n}\n.card[data-v-299e239e] {\n    box-shadow : 0px 0px 8px black;\n}\ninput[data-v-299e239e], select[data-v-299e239e] {\n    border-radius : 4px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    border : none;\n    outline : none;\n}\n.card-header[data-v-299e239e] {\n    height : 70px;\n    font-size : 30px;\n    padding-top : 10px;\n    color : white;\n    text-shadow : 0px 0px 4px #eb2f2f;\n    border-bottom : 2px solid rgba(0, 0, 0, 0.5);\n}\n.card-body[data-v-299e239e] {\n    min-height : 50vh;\n    display : flex;\n    justify-content : space-around;\n    flex-direction : column;\n    align-items : center;\n}\n#spin[data-v-299e239e] {\n    -webkit-animation : spin-data-v-299e239e 2s linear infinite;\n            animation : spin-data-v-299e239e 2s linear infinite;\n    display : none;\n    margin : 30px 0px;\n}\n#selection[data-v-299e239e], #top-selection[data-v-299e239e], #sub-selection[data-v-299e239e] {\n    display : none;\n}\n@-webkit-keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n@keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n#preview-btn-container[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n    display : flex;\n    justify-content: center;\n}\n#preview[data-v-299e239e] {\n    width : 100px;\n    height : 40px;\n    border-radius : 8px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    background : black;\n    display : none;\n    color : white;\n    border : none;\n    outline : none;\n}\n#limiter input[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n}\n#close[data-v-299e239e] {\n    cursor: pointer;\n    border: none;\n    height: 30px;\n    width: 30px;\n    border-radius: 50%;\n    box-shadow: 0px 1px 4px 1px #4e73df;\n    color: red;\n    float: right;\n    background-color: transparent;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32911,6 +33097,20 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
+    _c("div", { attrs: { id: "independent" } }, [
+      _c(
+        "button",
+        {
+          on: {
+            click: function ($event) {
+              _vm.document.getElementById("independent").style.display = "none"
+            },
+          },
+        },
+        [_c("i", { staticClass: "bi bi-plus" })]
+      ),
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8 py-6" }, [
         _c("div", { staticClass: "card" }, [
@@ -33000,18 +33200,84 @@ var render = function () {
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
-              _vm._m(2),
+              _c("div", { attrs: { id: "top-selection" } }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "topic-category", id: "topic-category" },
+                    on: {
+                      change: function ($event) {
+                        return _vm.spinForSubtopics(_vm.source)
+                      },
+                    },
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("--Please choose a topic--"),
+                    ]),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { attrs: { id: "sub-selection" } }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    attrs: {
+                      name: "subtopic-category",
+                      id: "subtopic-category",
+                    },
+                    on: {
+                      change: function ($event) {
+                        return _vm.quest(_vm.source)
+                      },
+                    },
+                  },
+                  [
+                    _c("option", { attrs: { value: "not" } }, [
+                      _vm._v("--Please choose a subtopic--"),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "preview-btn-container" } }, [
+                  _c(
+                    "button",
+                    {
+                      attrs: { id: "preview" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.preview()
+                        },
+                      },
+                    },
+                    [_vm._v("Preview")]
+                  ),
+                ]),
+              ]),
             ]),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
             _vm._m(4),
-            _vm._v(" "),
-            _vm._m(5),
           ]),
         ]),
       ]),
@@ -33041,110 +33307,47 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", [
-        _c("label", { attrs: { for: "topic-category" } }, [
-          _vm._v("Select Topic: "),
-          _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "select",
-          { attrs: { name: "topic-category", id: "topic-category" } },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("--Please choose a topic--"),
-            ]),
-          ]
-        ),
-      ]),
+    return _c("label", { attrs: { for: "topic-category" } }, [
+      _vm._v("Select Topic: "),
+      _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "row form-group",
-        staticStyle: { display: "none" },
-        attrs: { id: "subtopicDiv5" },
-      },
-      [
-        _c("label", { attrs: { for: "subtopics5" } }, [
-          _vm._v("Select Subtopic: "),
-          _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
-        ]),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "subtopics5", id: "subtopics5" },
-          },
-          [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("--Please choose a subtopic--"),
-            ]),
-          ]
-        ),
-      ]
-    )
+    return _c("label", { attrs: { for: "subtopic-category" } }, [
+      _vm._v("Select Subtopic: "),
+      _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
+    ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "row form-group",
-        staticStyle: { display: "none" },
-        attrs: { id: "topicloader5" },
-      },
-      [
-        _c("div", { staticClass: "offset-md-4 col-md-4" }, [
-          _c("i", {
-            staticClass: "fas fa-spinner fa-spin",
-            staticStyle: { "font-size": "30px", color: "blue" },
-          }),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row form-group" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("label", { attrs: { for: "subtopic2" } }, [
-          _vm._v("Number of questions: "),
-          _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
-        ]),
-        _c("br"),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "number",
-            min: "0",
-            max: "10",
-            id: "count5",
-            name: "count5",
-          },
-        }),
-        _vm._v(" "),
-        _c(
-          "p",
-          { staticClass: "text text-danger", attrs: { id: "counterror5" } },
-          [_vm._v("Number should be between 1 and 10")]
-        ),
+    return _c("div", { attrs: { id: "limiter" } }, [
+      _c("label", { attrs: { for: "quest-limit" } }, [
+        _vm._v("Number of questions: "),
+        _c("span", { staticStyle: { color: "red" } }, [_vm._v("*")]),
       ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("input", {
+        attrs: {
+          type: "number",
+          min: "0",
+          max: "10",
+          id: "quest-limit",
+          name: "limit",
+        },
+      }),
+      _vm._v(" "),
+      _c(
+        "p",
+        { staticClass: "text text-danger", attrs: { id: "counterror" } },
+        [_vm._v("Number should be between 1 and 10")]
+      ),
     ])
   },
 ]

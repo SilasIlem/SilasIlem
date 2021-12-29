@@ -1,5 +1,10 @@
 <template>
     <div class="container">
+        <div id="independent">
+            <button v-on:click = "document.getElementById('independent').style.display = 'none';">
+                <i class = "bi bi-plus"></i>
+            </button>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-8 py-6">
                 <div class="card">
@@ -44,41 +49,53 @@
                                 <br />
                                 <br />
 
-                            <div>
-                                <div>
-                                    <label for="topic-category">Select Topic: <span style="color:red">*</span></label>
-                                    
-                                    <br />
+                            <div id = "top-selection">
+                               
+                                <label for="topic-category">Select Topic: <span style="color:red">*</span></label>
+                                
+                                <br />
 
-                                    <select name="topic-category" id="topic-category">
-                                        <option value="">--Please choose a topic--</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                            <br />
-                            <br />
-
-                        <div class="row form-group" id="subtopicDiv5" style="display: none;">
-                           
-                                <label for="subtopics5">Select Subtopic: <span style="color:red">*</span></label><br>
-                                <select name="subtopics5" id="subtopics5" class="form-control">
-                                    <option value="">--Please choose a subtopic--</option>
+                                <select v-on:change = "spinForSubtopics(source)" name="topic-category" id="topic-category">
+                                    <option value="">--Please choose a topic--</option>
                                 </select>
-                          
-                        </div>
-
-                        <div class="row form-group" id="topicloader5" style="display: none;">
-                            <div class="offset-md-4 col-md-4"><i class="fas fa-spinner fa-spin" style="font-size: 30px; color:blue"></i></div>
-                        </div>
-
-                        <div class="row form-group">
-                            <div class="container">
-                                <label for="subtopic2">Number of questions: <span style="color:red">*</span></label><br>
-                                <input type="number" min="0" max="10" class="form-control" id="count5" name="count5" />
-                                <p class="text text-danger" id="counterror5">Number should be between 1 and 10</p>
+                               
                             </div>
+
+                            <br />
+                            <br />
+
+                            <div id = "sub-selection">
+                            
+                                <label for="subtopic-category">Select Subtopic: <span style="color:red">*</span></label>
+                                
+                                <br />
+
+                                <select v-on:change = "quest(source)" name="subtopic-category" id="subtopic-category">
+                                    <option value="not">--Please choose a subtopic--</option>
+                                </select>
+
+                                <br />
+                                <br />
+
+                                <div id = "preview-btn-container">
+                                    <button id = "preview" v-on:click = "preview()">Preview</button>
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                        <br />
+                        <br />
+
+                        <div id = "limiter">
+                 
+                                <label for="quest-limit">Number of questions: <span style="color:red">*</span></label>
+                                
+                                <br />
+
+                                <input type="number" min="0" max="10" id="quest-limit" name="limit" />
+                                <p class="text text-danger" id="counterror">Number should be between 1 and 10</p>
+                         
                         </div>
 
                     </div>
@@ -89,11 +106,38 @@
 </template>
 
 <style scoped>
+    #independent {
+        min-height : 70vh;
+        min-width : 70vw;
+        left : 15vw;
+        z-index : 99;
+        max-width : 70vw;
+        position : fixed;
+        top : 15vh;
+        max-height : 70vh;
+        background : white;
+        border-radius : 8px;
+        display : none;
+        box-shadow : 0px 0px 8px #eb2f2f;
+    }
+
+    .card {
+        box-shadow : 0px 0px 8px black;
+    }
+
+    input, select {
+        border-radius : 4px;
+        box-shadow : 0px 0px 4px #eb2f2f;
+        border : none;
+        outline : none;
+    }
     .card-header {
         height : 70px;
         font-size : 30px;
         padding-top : 10px;
-        color : blue;
+        color : white;
+        text-shadow : 0px 0px 4px #eb2f2f;
+        border-bottom : 2px solid rgba(0, 0, 0, 0.5);
     }
 
     .card-body {
@@ -107,9 +151,10 @@
     #spin {
         animation : spin 2s linear infinite;
         display : none;
+        margin : 30px 0px;
     }
 
-    #selection {
+    #selection, #top-selection, #sub-selection {
         display : none;
     }
 
@@ -117,6 +162,30 @@
         to {
             transform : rotate(360deg);
         }
+    }
+
+    #preview-btn-container {
+        min-width : 100%;
+        max-width : 100%;
+        display : flex;
+        justify-content: center;
+    }
+
+    #preview {
+        width : 100px;
+        height : 40px;
+        border-radius : 8px;
+        box-shadow : 0px 0px 4px #eb2f2f;
+        background : black;
+        display : none;
+        color : white;
+        border : none;
+        outline : none;
+    }
+
+    #limiter input {
+        min-width : 100%;
+        max-width : 100%;
     }
 
     #close {
@@ -154,7 +223,7 @@ export default {
             var spinner = document.getElementById('spin');
             var classer = document.getElementById('class-category');
             var subjects = document.getElementById('subject-category');
-            source = `${source}json/subjects/${classer.value}.json`;
+            source = `${source}json/${classer.value}/subjects.json`;
             if (classer.value != 'not') {
                 spinner.style.display = 'block';
                 try {
@@ -183,9 +252,11 @@ export default {
 
         async spinForTopics(source) {
             var spinner = document.getElementById('spin');
+            var classer = document.getElementById('class-category').value;
             var subber = document.getElementById('subject-category');
             var toppick = document.getElementById('topic-category');
-            source = `${source}json/topics/${subber.value}.json`;
+            var toppicker = document.getElementById('top-selection');
+            source = `${source}json/${classer}/${subber.value}/topics.json`;
             if (subber.value != 'not') {
                 spinner.style.display = 'block';
                 try {
@@ -195,10 +266,12 @@ export default {
                     this.topics = response.data;
                     spinner.style.display = "none";
                     console.log(this.topics);
-                    toppick.innerHTML = '';
+                    toppicker.style.display = "block";
+                    toppick.innerHTML = `
+                                    <option value="not">--Please choose a subtopic--</option>`;
                     this.topics.forEach(topic => {
                         toppick.innerHTML += `
-                                            <option value="${topic.value}">${topic.name}</option>`;
+                            <option value="${topic.value}">${topic.name}</option>`;
                     });
                     
                 } 
@@ -208,6 +281,91 @@ export default {
                 }
             }
             
+        },
+
+        async spinForSubtopics(source) {
+            var spinner = document.getElementById('spin');
+            var classer = document.getElementById('class-category').value;
+            var subber = document.getElementById('subject-category').value;
+            var top = document.getElementById('topic-category');
+            var subtick = document.getElementById('subtopic-category');
+            var subticker = document.getElementById('sub-selection');
+            source = `${source}json/${classer}/${subber}/${top.value}/subtopics.json`;
+            if (top.value != 'not') {
+                spinner.style.display = 'block';
+                try {
+                    const response = await this.$http.get(
+                        source
+                    );
+                    this.subtopics = response.data;
+                    spinner.style.display = "none";
+                    console.log(this.subtopics);
+                    subticker.style.display = "block";
+                    subtick.innerHTML = `
+                                    <option value="not">--Please choose a subtopic--</option>`;
+                    this.subtopics.forEach(subtopic => {
+                        subtick.innerHTML += `
+                            <option value="${subtopic.value}">${subtopic.name}</option>`;
+                    });
+                    
+                } 
+                
+                catch (error) {
+                    console.log(error);
+                }
+            }
+            
+        },
+
+        async quest(source) {
+            var spinner = document.getElementById('spin');
+            var classer = document.getElementById('class-category').value;
+            var subber = document.getElementById('subject-category').value;
+            var top = document.getElementById('topic-category');
+            var value = document.getElementById('subtopic-category').value;
+            var showglass = document.getElementById('independent');
+            var subticker = document.getElementById('sub-selection');
+            var preview_btn = document.getElementById('preview');
+            
+            var url = `${source}quest/${value}`;
+            if (top.value != 'not') {
+                spinner.style.display = 'block';
+                try {
+                    const response = await this.$http.post(
+                        url
+                    );
+
+                    this.questions = response.data;
+
+                    spinner.style.display = "none";
+                    preview_btn.style.display = "block";
+                    this.questions.forEach(question => {
+                        showglass.innerHTML += `
+                            <div style = "display : flex; flex-direction : column; text-align : left; min-height : 200px; min-width : 90%; max-width : 90%; box-shadow : 0px 0px 8px black; margin : 5%;">
+                                <span>${question.id}</span>
+                                 -- 
+                                <p>${question.question}</p>
+                                <p>${question.answers[0]}</p>
+                                <p>${question.answers[1]}</p>
+                                <p>${question.answers[2]}</p>
+                                <p>${question.answers[3]}</p>
+                                <p>${question.answers[4]}</p>
+                            </div>
+                        `
+                    });
+                    
+                } 
+                
+                catch (error) {
+                    console.log(error);
+                }
+            }
+            
+        },
+
+        preview : () => {
+            var showglass = document.getElementById('independent');
+            showglass.style.display = "block";
         }
     }      
 };

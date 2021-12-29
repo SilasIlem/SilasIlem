@@ -1,0 +1,12 @@
+[
+    {
+        "id" : 1,
+        "name" : "Light Waves",
+        "value" : "phy-lw"
+    },
+    {
+        "id" : 2,
+        "name" : "Sound Waves",
+        "value" : "phy-sw"
+    }
+]

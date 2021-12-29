@@ -28,7 +28,7 @@
                     </p>
                     <div id = app>
 
-                        <example-component no = 1 source = "{{asset('')}}"></example-component>
+                        <example-component no = "1" source = "{{asset('')}}"></example-component>
 
                     </div>
                 </div>

@@ -34,4 +34,6 @@ Route::get('/subscription', function () {
     return view('sub');
 })->middleware(['auth'])->name('sub');
 
+Route::post('/quest/{identifier}', [App\Http\Controllers\questController::class, 'quest'])->middleware(['auth'])->name('quest');
+
 require __DIR__ . '/auth.php';
