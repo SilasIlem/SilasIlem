@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div id="independent">
-            <button v-on:click = "document.getElementById('independent').style.display = 'none';">
-                <i class = "bi bi-plus"></i>
+            <button onclick = "document.getElementById('independent').style.display = 'none';">
+                <i class = "bi bi-x"></i>
             </button>
         </div>
         <div class="row justify-content-center">
@@ -121,6 +121,24 @@
         box-shadow : 0px 0px 8px #eb2f2f;
     }
 
+    #independent button {
+        position : absolute;
+        right : 8px;
+        top : 8px;
+        width : 50px;
+        background : white;
+        border-radius : 50%;
+        box-shadow : 4px 4px 8px black;
+        height : 50px;
+        padding-top : 8px;
+        font-size : 28px;
+        text-align : center;
+    }
+
+    #independent button i {
+        font-weight : 800;
+    }
+
     .card {
         box-shadow : 0px 0px 8px black;
     }
@@ -203,14 +221,10 @@
 
 <script>
 import axios from 'axios';
+
 Vue.prototype.$http = axios;
 
 export default {
-    data : () => {
-        return {
-            one : 'I am the one.'
-        }
-    },
     props : {
         no : Number,
         source : String
@@ -339,19 +353,19 @@ export default {
 
                     spinner.style.display = "none";
                     preview_btn.style.display = "block";
+                    var toChange = [];
+
                     this.questions.forEach(question => {
                         showglass.innerHTML += `
-                            <div style = "display : flex; flex-direction : column; text-align : left; min-height : 200px; min-width : 90%; max-width : 90%; box-shadow : 0px 0px 8px black; margin : 5%;">
-                                <span>${question.id}</span>
-                                 -- 
-                                <p>${question.question}</p>
-                                <p>${question.answers[0]}</p>
-                                <p>${question.answers[1]}</p>
-                                <p>${question.answers[2]}</p>
-                                <p>${question.answers[3]}</p>
-                                <p>${question.answers[4]}</p>
-                            </div>
-                        `
+                            <div style = "display : flex; padding : 12px; flex-direction : column; text-align : left; min-height : 200px; min-width : 90%; max-width : 90%; box-shadow : 0px 0px 8px black; margin : 5%;">        
+                                <p><span>${question.id}. </span>${question.question}</p>
+                                <p>( A ). ${question.answers[0]}</p>
+                                <p>( B ). ${question.answers[1]}</p>
+                                <p>( C ). ${question.answers[2]}</p>
+                                <p>( D ). ${question.answers[3]}</p>
+                                <p>( E ). ${question.answers[4]}</p>
+                                <div class = "changeable-btn"><button class="changer" onclick = "this.classList.toggle('changeable'); ${toChange.push(question.id)}">Change</button></div>
+                            </div>`;     
                     });
                     
                 } 
@@ -361,6 +375,10 @@ export default {
                 }
             }
             
+        },
+
+        change : () => {
+            console.log('changeit');
         },
 
         preview : () => {

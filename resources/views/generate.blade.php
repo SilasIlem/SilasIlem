@@ -18,6 +18,31 @@
                             text-align : center;
                             font-size : 30px;
                         }
+
+                        #independent {
+                            padding-top : 70px;
+                            overflow-y : scroll;
+                            padding-bottom : 30px;
+                        }
+
+                        .changeable-btn {
+                            min-width : 100%;
+                            max-width : 100%;
+                            display : flex;
+                            justify-content: center;
+                            margin-top : 20px;
+                        }
+
+                        #independent div button {
+                            width : 100px;
+                            height : 40px;
+                            background : black;
+                            color : white;
+                        }
+
+                        #independent button.changeable {
+                            background : #eb2f2f;
+                        }
                     </style>
 
                     <p>

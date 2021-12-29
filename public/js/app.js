@@ -8850,14 +8850,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      one: 'I am the one.'
-    };
-  },
   props: {
     no: Number,
     source: String
@@ -9031,7 +9044,7 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        var spinner, classer, subber, top, value, showglass, subticker, preview_btn, url, response;
+        var spinner, classer, subber, top, value, showglass, subticker, preview_btn, url, response, toChange;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -9047,7 +9060,7 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
                 url = "".concat(source, "quest/").concat(value);
 
                 if (!(top.value != 'not')) {
-                  _context4.next = 24;
+                  _context4.next = 25;
                   break;
                 }
 
@@ -9061,26 +9074,30 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
                 _this4.questions = response.data;
                 spinner.style.display = "none";
                 preview_btn.style.display = "block";
+                toChange = [];
 
                 _this4.questions.forEach(function (question) {
-                  showglass.innerHTML += "\n                            <div style = \"display : flex; flex-direction : column; text-align : left; min-height : 200px; min-width : 90%; max-width : 90%; box-shadow : 0px 0px 8px black; margin : 5%;\">\n                                <span>".concat(question.id, "</span>\n                                 -- \n                                <p>").concat(question.question, "</p>\n                                <p>").concat(question.answers[0], "</p>\n                                <p>").concat(question.answers[1], "</p>\n                                <p>").concat(question.answers[2], "</p>\n                                <p>").concat(question.answers[3], "</p>\n                                <p>").concat(question.answers[4], "</p>\n                            </div>\n                        ");
+                  showglass.innerHTML += "\n                            <div style = \"display : flex; padding : 12px; flex-direction : column; text-align : left; min-height : 200px; min-width : 90%; max-width : 90%; box-shadow : 0px 0px 8px black; margin : 5%;\">        \n                                <p><span>".concat(question.id, ". </span>").concat(question.question, "</p>\n                                <p>( A ). ").concat(question.answers[0], "</p>\n                                <p>( B ). ").concat(question.answers[1], "</p>\n                                <p>( C ). ").concat(question.answers[2], "</p>\n                                <p>( D ). ").concat(question.answers[3], "</p>\n                                <p>( E ). ").concat(question.answers[4], "</p>\n                                <div class = \"changeable-btn\"><button class=\"changer\" onclick = \"this.classList.toggle('changeable'); ").concat(toChange.push(question.id), "\">Change</button></div>\n                            </div>");
                 });
 
-                _context4.next = 24;
+                _context4.next = 25;
                 break;
 
-              case 21:
-                _context4.prev = 21;
+              case 22:
+                _context4.prev = 22;
                 _context4.t0 = _context4["catch"](11);
                 console.log(_context4.t0);
 
-              case 24:
+              case 25:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[11, 21]]);
+        }, _callee4, null, [[11, 22]]);
       }))();
+    },
+    change: function change() {
+      console.log('changeit');
     },
     preview: function preview() {
       var showglass = document.getElementById('independent');
@@ -14264,7 +14281,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#independent[data-v-299e239e] {\n    min-height : 70vh;\n    min-width : 70vw;\n    left : 15vw;\n    z-index : 99;\n    max-width : 70vw;\n    position : fixed;\n    top : 15vh;\n    max-height : 70vh;\n    background : white;\n    border-radius : 8px;\n    display : none;\n    box-shadow : 0px 0px 8px #eb2f2f;\n}\n.card[data-v-299e239e] {\n    box-shadow : 0px 0px 8px black;\n}\ninput[data-v-299e239e], select[data-v-299e239e] {\n    border-radius : 4px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    border : none;\n    outline : none;\n}\n.card-header[data-v-299e239e] {\n    height : 70px;\n    font-size : 30px;\n    padding-top : 10px;\n    color : white;\n    text-shadow : 0px 0px 4px #eb2f2f;\n    border-bottom : 2px solid rgba(0, 0, 0, 0.5);\n}\n.card-body[data-v-299e239e] {\n    min-height : 50vh;\n    display : flex;\n    justify-content : space-around;\n    flex-direction : column;\n    align-items : center;\n}\n#spin[data-v-299e239e] {\n    -webkit-animation : spin-data-v-299e239e 2s linear infinite;\n            animation : spin-data-v-299e239e 2s linear infinite;\n    display : none;\n    margin : 30px 0px;\n}\n#selection[data-v-299e239e], #top-selection[data-v-299e239e], #sub-selection[data-v-299e239e] {\n    display : none;\n}\n@-webkit-keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n@keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n#preview-btn-container[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n    display : flex;\n    justify-content: center;\n}\n#preview[data-v-299e239e] {\n    width : 100px;\n    height : 40px;\n    border-radius : 8px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    background : black;\n    display : none;\n    color : white;\n    border : none;\n    outline : none;\n}\n#limiter input[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n}\n#close[data-v-299e239e] {\n    cursor: pointer;\n    border: none;\n    height: 30px;\n    width: 30px;\n    border-radius: 50%;\n    box-shadow: 0px 1px 4px 1px #4e73df;\n    color: red;\n    float: right;\n    background-color: transparent;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#independent[data-v-299e239e] {\n    min-height : 70vh;\n    min-width : 70vw;\n    left : 15vw;\n    z-index : 99;\n    max-width : 70vw;\n    position : fixed;\n    top : 15vh;\n    max-height : 70vh;\n    background : white;\n    border-radius : 8px;\n    display : none;\n    box-shadow : 0px 0px 8px #eb2f2f;\n}\n#independent button[data-v-299e239e] {\n    position : absolute;\n    right : 8px;\n    top : 8px;\n    width : 50px;\n    background : white;\n    border-radius : 50%;\n    box-shadow : 4px 4px 8px black;\n    height : 50px;\n    padding-top : 8px;\n    font-size : 28px;\n    text-align : center;\n}\n#independent button i[data-v-299e239e] {\n    font-weight : 800;\n}\n.card[data-v-299e239e] {\n    box-shadow : 0px 0px 8px black;\n}\ninput[data-v-299e239e], select[data-v-299e239e] {\n    border-radius : 4px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    border : none;\n    outline : none;\n}\n.card-header[data-v-299e239e] {\n    height : 70px;\n    font-size : 30px;\n    padding-top : 10px;\n    color : white;\n    text-shadow : 0px 0px 4px #eb2f2f;\n    border-bottom : 2px solid rgba(0, 0, 0, 0.5);\n}\n.card-body[data-v-299e239e] {\n    min-height : 50vh;\n    display : flex;\n    justify-content : space-around;\n    flex-direction : column;\n    align-items : center;\n}\n#spin[data-v-299e239e] {\n    -webkit-animation : spin-data-v-299e239e 2s linear infinite;\n            animation : spin-data-v-299e239e 2s linear infinite;\n    display : none;\n    margin : 30px 0px;\n}\n#selection[data-v-299e239e], #top-selection[data-v-299e239e], #sub-selection[data-v-299e239e] {\n    display : none;\n}\n@-webkit-keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n@keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n#preview-btn-container[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n    display : flex;\n    justify-content: center;\n}\n#preview[data-v-299e239e] {\n    width : 100px;\n    height : 40px;\n    border-radius : 8px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    background : black;\n    display : none;\n    color : white;\n    border : none;\n    outline : none;\n}\n#limiter input[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n}\n#close[data-v-299e239e] {\n    cursor: pointer;\n    border: none;\n    height: 30px;\n    width: 30px;\n    border-radius: 50%;\n    box-shadow: 0px 1px 4px 1px #4e73df;\n    color: red;\n    float: right;\n    background-color: transparent;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -33097,19 +33114,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { attrs: { id: "independent" } }, [
-      _c(
-        "button",
-        {
-          on: {
-            click: function ($event) {
-              _vm.document.getElementById("independent").style.display = "none"
-            },
-          },
-        },
-        [_c("i", { staticClass: "bi bi-plus" })]
-      ),
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8 py-6" }, [
@@ -33134,7 +33139,7 @@ var render = function () {
               : _vm._e(),
             _vm._v(" "),
             _c("div", [
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
@@ -33174,7 +33179,7 @@ var render = function () {
             _vm._v(" "),
             _c("div", { attrs: { id: "selection" } }, [
               _c("div", [
-                _vm._m(1),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(" "),
@@ -33201,7 +33206,7 @@ var render = function () {
               _c("br"),
               _vm._v(" "),
               _c("div", { attrs: { id: "top-selection" } }, [
-                _vm._m(2),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(" "),
@@ -33228,7 +33233,7 @@ var render = function () {
               _c("br"),
               _vm._v(" "),
               _c("div", { attrs: { id: "sub-selection" } }, [
-                _vm._m(3),
+                _vm._m(4),
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(" "),
@@ -33277,7 +33282,7 @@ var render = function () {
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _vm._m(4),
+            _vm._m(5),
           ]),
         ]),
       ]),
@@ -33285,6 +33290,23 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "independent" } }, [
+      _c(
+        "button",
+        {
+          attrs: {
+            onclick:
+              "document.getElementById('independent').style.display = 'none';",
+          },
+        },
+        [_c("i", { staticClass: "bi bi-x" })]
+      ),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
