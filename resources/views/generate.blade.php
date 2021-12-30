@@ -43,6 +43,24 @@
                         #independent button.changeable {
                             background : #eb2f2f;
                         }
+
+                        .main {
+                            position : relative;
+                        }
+
+                        #set-adder {
+                            position : absolute;
+                            left : 10px;
+                            top : 10px;
+                            width : 50px;
+                            height : 50px;
+                            box-shadow : 4px 4px 8px black;
+                            background : white;
+                            color : black;
+                            border-radius : 50%;
+                            font-size : 30px;
+                            padding-top : 10px;
+                        }
                     </style>
 
                     <p>
@@ -51,13 +69,24 @@
                     <p>
                         You still have 4 Question Papers to Go <a href="#"> Subscribe Now</a>
                     </p>
+
+                    <button title = "click to add set" id = set-adder><i class = "bi bi-plus"></i></button>
                     <div id = app>
 
                         <example-component no = "1" source = "{{asset('')}}"></example-component>
+                        <example-component v-if = "two" no = "1" source = "{{asset('')}}"></example-component>
+                        <example-component v-if = "three" no = "1" source = "{{asset('')}}"></example-component>
+                        <example-component v-if = "four" no = "1" source = "{{asset('')}}"></example-component>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        var adder = document.getElementById('set-adder');
+        adder.addEventListener('click', () => {
+            var two = true;
+        })
+    </script>
 </x-app-layout>

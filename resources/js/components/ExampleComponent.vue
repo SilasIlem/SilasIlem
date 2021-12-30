@@ -113,7 +113,7 @@
         z-index : 99;
         max-width : 96vw;
         position : fixed;
-        top : 5vh;
+        top : 2.5vh;
         max-height : 90vh;
         background : white;
         border-radius : 8px;
