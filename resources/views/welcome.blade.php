@@ -380,6 +380,7 @@
                 #top {
                     background-image : url('images/land.jpg');
                     background-size : cover;
+                    min-height : 80vh;
                 }
                 header ul {
                     flex-direction : column;
