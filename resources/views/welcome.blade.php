@@ -38,11 +38,11 @@
             }
 
             #top {
-                background-image : url('images/land.jpg');
+                background-image : url('images/1301.jpg');
                 background-attachment : fixed;
-                background-size : cover;
+                background-size : contain;
                 color : white;
-                height : 70vh;
+                height : 50vh;
             }
 
             #s-media {
@@ -192,8 +192,7 @@
             }
 
             footer {
-                height : 30vh;
-                width : 100%;
+                min-height : 30vh;
                 border : 1px solid #eb2f2f;
             }
 
@@ -225,8 +224,163 @@
                 }
             }
 
-            @media screen and (max-width : 764px) {
+            #assist {
+                width : 100%;
+                display : flex;
+                justify-content : center;
+                margin-top : 40px;
+                color : white;
+                text-shadow : 0px 0px 4px #eb2f2f;
+                font-size : 30px;
+                padding : 0px 20px;
+            }
 
+            footer {
+                min-width : 100vw;
+                max-width : 100vw;
+                min-height : 30vh;
+            }
+
+            footer > div {
+                min-width : 100vw;
+                max-width : 100vw;
+                min-height : 30vh;
+                display : flex;
+                flex-direction : column;
+                justify-content : space-evenly;
+                text-align : center;
+                align-items : center;
+            }
+
+            footer > div > * {
+                margin : 16px 0px;
+            }
+
+            footer h1 {
+                font-size : 30px;
+                font-weight : 600;
+            }
+
+            footer form input {
+                height : 50px;
+                margin : 0px;
+                padding-left : 20px;
+            }
+
+            footer form #subscribe {
+                border-top-right-radius : 18px;
+                background : #eb2f2f;
+                height : 50px;
+                margin : 0px;
+                width : 120px;
+                border : none;
+                outline : none;
+                color : white;
+            }
+
+            #subscribe:hover {
+                background : black;
+                transition : all .3s linear;
+            }
+
+            #trending > * {
+                margin : 10px;
+                padding : 10px;
+                box-shadow : 0px 0px 2px #eb2f2f;
+                border-radius : 4px;
+                min-width : 96%;
+                max-width : 96%;
+            }
+
+            #trending > * > h3 {
+                padding : 8px;
+                padding-left : 16px;
+                border-bottom : .2px solid grey;
+                margin-bottom : 16px;
+                color : white;
+                font-size : 24px;
+                text-shadow : 0px 0px 8px #eb2f2f;
+            }
+
+            #trending .head {
+                padding : 10px 16px 20px;
+                font-weight : 600;
+            }
+
+            #trending .body img {
+                height : 50px;
+                width : 50px;
+                float : left;
+                margin : 10px;
+            }
+
+            #contact {
+                min-width : 96%;
+                max-width : 96%;
+                text-align : center;
+                margin-top : 80px;
+            }
+
+            #contact > div {
+                display : flex;
+                padding-left : 30px;
+                height : 100px;
+                align-items : center;
+            }
+
+            #contact #form-container {
+                display : flex;
+                padding : 0px;
+                height : max-content;
+                justify-content : center;
+            }
+
+            #contact i {
+                padding-right : 12px;
+                font-size : 36px;
+            }
+
+            #contact i:hover {
+                color : #eb2f2f;
+                transition : color .3s linear;
+            }
+
+            #contact form {
+                min-height : 50vh;
+                max-height : 50vh;
+                min-width : 300px;
+                max-width : 300px;
+                display : flex;
+                flex-direction : column;
+                justify-content : space-around;
+                align-items : center;
+            }
+
+            #form-container input, textarea, button{
+                height : 50px;
+                width : 90%;
+                border-radius : 4px;
+                border : 1px solid black;
+                padding-left : 10px;
+            }
+
+            #form-container button {
+                width : 70%;
+                background : #eb2f2f;
+                border : none;
+                color : white;
+                outline : none;
+            }
+
+            @media screen and (max-width : 764px) {
+                #trending > * {
+                    min-width : 96vw;
+                    max-width : 96vw;
+                }
+                #top {
+                    background-image : url('images/land.jpg');
+                    background-size : cover;
+                }
                 header ul {
                     flex-direction : column;
                     background : #eb2f2f;
@@ -266,6 +420,14 @@
                     min-width : 100%;
                     max-width : 100%;
                     margin : 0px;
+                }
+
+                #assist {
+                    margin-top : 10px;
+                    color : white;
+                    text-shadow : 0px 0px 4px #eb2f2f;
+                    font-size : 18px;
+                    padding : 0px 20px;
                 }
 
                 #landing > * {
@@ -325,6 +487,10 @@
                     </ul>
                 </header>
 
+                <div id = assist>
+                    <h1>What Would you Like to do?</h1>
+                </div>
+
                 <div id = btns>
                     <button id = first>Get Started</button>
 
@@ -350,8 +516,59 @@
             <i class = "bi bi-house"></i>
         </button>
 
-        <h3 style = "text-align : center; margin : 10px 0px">Welcome to Optimyzas</h3>
+        <h3 style = "text-align : center; margin : 10px 0px">Welcome to Uptimyzas</h3>
 
+        <h2 style = "padding : 20px; font-size : 18px; text-align : center;"><span style = "color : #eb2f2f; font-size : 20px">AD: </span>Gain Admission into 200 Level in Any University Of Your Choice Through IJMB/JUPEB. No JAMB | LOW FEES. Registration In Progess. <a href = "tel://07039279650">Call 07039279650 NOW!!!</a></h2>
+
+        <div id = trending class = container>
+            <div>
+                <h3>Trending</h3>
+                <div>
+                    <p class="head">WAEC GCE Timetable</p>
+                    <div class = body>
+                        <img src="{{asset('images/ads/Waec-image.png')}}" alt="img" />
+                        <p>2022 1st Series WAEC GCE Registration Form - Instructions and Guidelines.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Trending</h3>
+                <div>
+                    <p class="head">WAEC GCE Timetable</p>
+                    <div class = body>
+                        <img src="{{asset('images/ads/Neco-image.jpeg')}}" alt="img" />
+                        <p>2022 1st Series WAEC GCE Registration Form - Instructions and Guidelines.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <h3>Trending</h3>
+                <div>
+                    <p class="head">WAEC GCE Timetable</p>
+                    <div class = body>
+                        <img src="{{asset('images/ads/Neco-image.jpeg')}}" alt="img" />
+                        <p>2022 1st Series WAEC GCE Registration Form - Instructions and Guidelines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Trending</h3>
+                <div>
+                    <p class="head">WAEC GCE Timetable</p>
+                    <div class = body>
+                        <img src="{{asset('images/ads/Waec-image.png')}}" alt="img" />
+                        <p>2022 1st Series WAEC GCE Registration Form - Instructions and Guidelines.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+            
         <div id="landing" class = "container">
             <div>
                <h4>Our Core Values</h4>
@@ -391,8 +608,103 @@
             </p>
         </div>
 
-        <footer>
+        <div id = contact>
+            <h1>CONTACT US</h1>
+            <p>Have any enquiries or sugestions? We'd love to hear from you!</p>
 
+            <div>
+                <i class = "bi bi-sim-fill"></i><p>Location : Nigeria</p>
+            </div>
+
+            <div>
+                <i class = "bi bi-envelope-fill"></i><p>Email : danryan0246@gmail.com</p>
+            </div>
+
+            <div>
+                <i class = "bi bi-phone"></i><p>Call: 0707897878</p>
+            </div>
+
+            <div id = form-container>
+                <form action="">
+                    <input type="text" placeholder = "Your Name" />
+                    <input type="email" placeholder = "Your Email" />
+                    <textarea placeholder = "Interests"></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+
+        
+        <style>
+            #quick-links {
+                margin-top : 80px;
+                min-height : 50vh;
+                min-width : 96%;
+                max-width : 96%;
+                display : flex;
+                flex-direction : column;
+                justify-content: space-between;
+                align-items : center;
+            }
+
+            #quick-links  h1 {
+                min-width : 70%;
+                max-width : 70%;
+                text-align : center;
+                padding-bottom : 12px;
+                border-bottom : 2px solid #eb2f2f;
+            }
+
+            #quick-links > div {
+                min-height : 40vh;
+                display : flex;
+                flex-direction : column;
+                justify-content: space-around;
+                align-items : center;
+                margin-bottom : 12px;
+            }
+        </style>
+
+        <div id="quick-links">
+            <h1>Quick Links</h1>
+
+            <div>
+                <p>WAEC Form</p>
+                <p>NECO Form</p>
+                <p>JAMB Form</p>
+                <p>WAEC Form</p>
+                <p>NECO Form</p>
+                <p>JAMB Form</p>
+                <p>WAEC Form</p>
+                <p>NECO Form</p>
+                <p>JAMB Form</p>
+            </div>
+            
+        </div>
+
+        <footer class = "bg-white">
+            <div>
+                <h1>Uptimyzas</h1>
+                <h4>AN ONLINE EXAM-SETTING PLATFORM</h4>
+                
+                <br />
+                <br />
+
+                <h1>Join Our Newsletter: </h1>
+
+                <br />
+
+                <h2>Subscribe and get the latest updates straight into your inbox</h2>
+                
+                <br />
+
+                <form action="" method = POST>
+                    <input type="email" placeholder = "Email Address" name = email />
+                    <button type="submit" id = subscribe>Subscribe</button>
+                </form>
+            </div>
+            
         </footer>
         
         <script>

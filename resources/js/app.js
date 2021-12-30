@@ -36,4 +36,22 @@ Vue.component('gen-card', require('./components/genCard.vue').default);
 
 const app = new Vue({
     el: '#app',
+    props : [
+        'limit'
+    ],
+    data : {
+        counts : 1 
+    },
+    methods : {
+        addComponent: function(){
+            if (this.counts != 4){
+                this.counts++;
+            }
+        },
+        removeComponent: function(){
+            if (this.counts > 1){
+                this.counts--
+            }
+        }
+    }
 });

@@ -5,7 +5,7 @@
                 <i class = "bi bi-x"></i>
             </button>
         </div>
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-md-8 py-6">
                 <div class="card">
 
@@ -14,9 +14,7 @@
                     <div class="card-body">
 
                         <img id = spin :src = "source + 'images/compact-disc-solid.svg'" style="width: 50px; height : 50px; color:blue" />
-                        
-                        <button v-if = "no != 1" type="button" id="close">X</button>
-                        
+                                                
                         <div>
                         
                             <label for="class-category">Select Class & Exam Types:<span style="color:red">*</span></label>
@@ -106,6 +104,19 @@
 </template>
 
 <style scoped>
+    .container {
+        display : block;
+        min-width : 100%;
+        max-width : 100%;
+    }
+
+    .row {
+        min-width : 100%;
+        display : flex;
+        justify-content : center;
+        max-width : 100%;
+    }
+    
     #independent {
         min-height : 90vh;
         min-width : 96vw;
@@ -217,6 +228,28 @@
         float: right;
         background-color: transparent;
     }
+
+    
+    @media screen and (max-width : 764px) {
+        .container{
+            min-width : 100%;
+            max-width : 100%;
+        }
+
+        .card {
+            min-width : 80vw;
+            max-width : 80vw;
+        }
+    }
+
+    @media screen and (max-width : 500px) {
+
+        .card {
+            min-width : 90vw;
+            max-width : 90vw;
+        }
+
+    }
 </style>
 
 <script>
@@ -231,6 +264,7 @@ export default {
     },
     mounted() {
         console.log("Component mounted.");
+        run();
     },
     methods: {
         async spinForSubjects(source) {
@@ -385,8 +419,7 @@ export default {
             var showglass = document.getElementById('independent');
             showglass.style.display = "block";
         }
+       
     }      
 };
 </script>
-
-

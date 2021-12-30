@@ -8868,6 +8868,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -8877,6 +8910,7 @@ Vue.prototype.$http = (axios__WEBPACK_IMPORTED_MODULE_1___default());
   },
   mounted: function mounted() {
     console.log("Component mounted.");
+    run();
   },
   methods: {
     spinForSubjects: function spinForSubjects(source) {
@@ -9196,7 +9230,23 @@ Vue.component('gen-card', (__webpack_require__(/*! ./components/genCard.vue */ "
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  props: ['limit'],
+  data: {
+    counts: 1
+  },
+  methods: {
+    addComponent: function addComponent() {
+      if (this.counts != 4) {
+        this.counts++;
+      }
+    },
+    removeComponent: function removeComponent() {
+      if (this.counts > 1) {
+        this.counts--;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -14281,7 +14331,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#independent[data-v-299e239e] {\n    min-height : 90vh;\n    min-width : 96vw;\n    left : 2vw;\n    z-index : 99;\n    max-width : 96vw;\n    position : fixed;\n    top : 2.5vh;\n    max-height : 90vh;\n    background : white;\n    border-radius : 8px;\n    display : none;\n    box-shadow : 0px 0px 8px #eb2f2f;\n}\n#independent button[data-v-299e239e] {\n    position : absolute;\n    right : 8px;\n    top : 8px;\n    width : 50px;\n    background : white;\n    border-radius : 50%;\n    box-shadow : 4px 4px 8px black;\n    height : 50px;\n    padding-top : 8px;\n    font-size : 28px;\n    text-align : center;\n}\n#independent button i[data-v-299e239e] {\n    font-weight : 800;\n}\n.card[data-v-299e239e] {\n    box-shadow : 0px 0px 8px black;\n}\ninput[data-v-299e239e], select[data-v-299e239e] {\n    border-radius : 4px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    border : none;\n    outline : none;\n}\n.card-header[data-v-299e239e] {\n    height : 70px;\n    font-size : 30px;\n    padding-top : 10px;\n    color : white;\n    text-shadow : 0px 0px 4px #eb2f2f;\n    border-bottom : 2px solid rgba(0, 0, 0, 0.5);\n}\n.card-body[data-v-299e239e] {\n    min-height : 50vh;\n    display : flex;\n    justify-content : space-around;\n    flex-direction : column;\n    align-items : center;\n}\n#spin[data-v-299e239e] {\n    -webkit-animation : spin-data-v-299e239e 2s linear infinite;\n            animation : spin-data-v-299e239e 2s linear infinite;\n    display : none;\n    margin : 30px 0px;\n}\n#selection[data-v-299e239e], #top-selection[data-v-299e239e], #sub-selection[data-v-299e239e] {\n    display : none;\n}\n@-webkit-keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n@keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n#preview-btn-container[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n    display : flex;\n    justify-content: center;\n}\n#preview[data-v-299e239e] {\n    width : 100px;\n    height : 40px;\n    border-radius : 8px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    background : black;\n    display : none;\n    color : white;\n    border : none;\n    outline : none;\n}\n#limiter input[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n}\n#close[data-v-299e239e] {\n    cursor: pointer;\n    border: none;\n    height: 30px;\n    width: 30px;\n    border-radius: 50%;\n    box-shadow: 0px 1px 4px 1px #4e73df;\n    color: red;\n    float: right;\n    background-color: transparent;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-299e239e] {\n    display : block;\n    min-width : 100%;\n    max-width : 100%;\n}\n.row[data-v-299e239e] {\n    min-width : 100%;\n    display : flex;\n    justify-content : center;\n    max-width : 100%;\n}\n#independent[data-v-299e239e] {\n    min-height : 90vh;\n    min-width : 96vw;\n    left : 2vw;\n    z-index : 99;\n    max-width : 96vw;\n    position : fixed;\n    top : 2.5vh;\n    max-height : 90vh;\n    background : white;\n    border-radius : 8px;\n    display : none;\n    box-shadow : 0px 0px 8px #eb2f2f;\n}\n#independent button[data-v-299e239e] {\n    position : absolute;\n    right : 8px;\n    top : 8px;\n    width : 50px;\n    background : white;\n    border-radius : 50%;\n    box-shadow : 4px 4px 8px black;\n    height : 50px;\n    padding-top : 8px;\n    font-size : 28px;\n    text-align : center;\n}\n#independent button i[data-v-299e239e] {\n    font-weight : 800;\n}\n.card[data-v-299e239e] {\n    box-shadow : 0px 0px 8px black;\n}\ninput[data-v-299e239e], select[data-v-299e239e] {\n    border-radius : 4px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    border : none;\n    outline : none;\n}\n.card-header[data-v-299e239e] {\n    height : 70px;\n    font-size : 30px;\n    padding-top : 10px;\n    color : white;\n    text-shadow : 0px 0px 4px #eb2f2f;\n    border-bottom : 2px solid rgba(0, 0, 0, 0.5);\n}\n.card-body[data-v-299e239e] {\n    min-height : 50vh;\n    display : flex;\n    justify-content : space-around;\n    flex-direction : column;\n    align-items : center;\n}\n#spin[data-v-299e239e] {\n    -webkit-animation : spin-data-v-299e239e 2s linear infinite;\n            animation : spin-data-v-299e239e 2s linear infinite;\n    display : none;\n    margin : 30px 0px;\n}\n#selection[data-v-299e239e], #top-selection[data-v-299e239e], #sub-selection[data-v-299e239e] {\n    display : none;\n}\n@-webkit-keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n@keyframes spin-data-v-299e239e {\nto {\n        transform : rotate(360deg);\n}\n}\n#preview-btn-container[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n    display : flex;\n    justify-content: center;\n}\n#preview[data-v-299e239e] {\n    width : 100px;\n    height : 40px;\n    border-radius : 8px;\n    box-shadow : 0px 0px 4px #eb2f2f;\n    background : black;\n    display : none;\n    color : white;\n    border : none;\n    outline : none;\n}\n#limiter input[data-v-299e239e] {\n    min-width : 100%;\n    max-width : 100%;\n}\n#close[data-v-299e239e] {\n    cursor: pointer;\n    border: none;\n    height: 30px;\n    width: 30px;\n    border-radius: 50%;\n    box-shadow: 0px 1px 4px 1px #4e73df;\n    color: red;\n    float: right;\n    background-color: transparent;\n}\n@media screen and (max-width : 764px) {\n.container[data-v-299e239e]{\n        min-width : 100%;\n        max-width : 100%;\n}\n.card[data-v-299e239e] {\n        min-width : 80vw;\n        max-width : 80vw;\n}\n}\n@media screen and (max-width : 500px) {\n.card[data-v-299e239e] {\n        min-width : 90vw;\n        max-width : 90vw;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -33116,7 +33166,7 @@ var render = function () {
   return _c("div", { staticClass: "container" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row justify-content-center" }, [
+    _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-8 py-6" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
@@ -33131,12 +33181,6 @@ var render = function () {
                 src: _vm.source + "images/compact-disc-solid.svg",
               },
             }),
-            _vm._v(" "),
-            _vm.no != 1
-              ? _c("button", { attrs: { type: "button", id: "close" } }, [
-                  _vm._v("X"),
-                ])
-              : _vm._e(),
             _vm._v(" "),
             _c("div", [
               _vm._m(1),

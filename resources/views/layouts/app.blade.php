@@ -18,6 +18,14 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
 
         <style>
+            *::-webkit-scrollbar {
+                width : 8px;
+            }
+
+            *::-webkit-scrollbar-thumb {
+                background : #eb2f2f;
+            }
+            
             * {
                 padding : 0px;
                 margin : 0px;
@@ -57,11 +65,41 @@
                 min-width : 100vw;
                 max-width : 100vw;
                 min-height : 30vh;
+            }
+
+            footer > div {
+                min-width : 100vw;
+                max-width : 100vw;
+                min-height : 30vh;
                 display : flex;
                 flex-direction : column;
                 justify-content : space-evenly;
+                padding : 20px 30px;
                 align-items : center;
             }
+
+            footer > div > * {
+                margin : 16px 0px;
+            }
+
+            footer h1 {
+                font-size : 30px;
+                font-weight : 600;
+            }
+
+            footer form input {
+                height : 50px;
+                margin : 0px;
+            }
+
+            footer form #subscribe {
+                border-top-right-radius : 18px;
+                background : #eb2f2f;
+                height : 50px;
+                margin : 0px;
+                width : 120px;
+            }
+
         </style>
     </head>
     <body class="font-sans antialiased">
@@ -84,24 +122,27 @@
                 {{ $slot }}
             </main>
             <footer class = "bg-white">
-                <h1>Optimyzas</h1>
-                <h4>AN ONLINE EXAM-SETTING PLATFORM</h4>
+                <div>
+                    <h1>Uptimyzas</h1>
+                    <h4>AN ONLINE EXAM-SETTING PLATFORM</h4>
+                    
+                    <br />
+                    <br />
+
+                    <h1>Join Our Newsletter: </h1>
+
+                    <br />
+
+                    <h2>Subscribe and get the latest updates straight into your inbox</h2>
+                    
+                    <br />
+
+                    <form action="" method = POST>
+                        <input type="email" placeholder = "Email Address" name = email />
+                        <button type="submit" id = subscribe>Subscribe</button>
+                    </form>
+                </div>
                 
-                <br />
-                <br />
-
-                <p>Join Our Newsletter</p>
-
-                <br />
-
-                <p>subscribe and get the latest updates straight into your inbox</p>
-                
-                <br />
-
-                <form action="" method = POST>
-                    <input type="email" placeholder = "Email Address" name = email />
-                    <button type="submit">Subscribe</button>
-                </form>
             </footer>
         </div>
         <script>
