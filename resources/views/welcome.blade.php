@@ -198,11 +198,11 @@
 
             #more-links {
                 min-height : 60px;
-                max-height : 60px;
                 margin : 10px 0px;
                 background : white;
                 display : flex;
                 justify-content : center;
+                flex-wrap : wrap;
                 align-items : center;
                 min-width : 100%;
                 max-width : 100%;
@@ -211,7 +211,8 @@
             }
 
             #more-links > *{
-                min-width : 100px;
+                min-width : 220px;
+                margin : 10px;
                 text-align : center;
             }
 
@@ -507,10 +508,10 @@
         </div>
 
         <div id = more-links>
-            <a href="">a</a>
-            <a href="">b</a>
-            <a href="">c</a>
-            <a href="">d</a>
+            <a href=""><img src="{{asset('images/ads/Neco-image.jpeg')}}" alt=""></a>
+            <a href="">Study in Bangkokk</a>
+            <a href=""><img src="{{asset('images/ads/Waec-image.png')}}" alt=""></a>
+            <a href="">Fly to Ghana</a>
         </div>
 
         <button id="open-menu">
